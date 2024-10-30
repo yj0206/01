@@ -1,0 +1,25 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.image-container {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+
+img.hidden {
+    opacity: 0;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片点击消失</title>
+    <style>
+        img {
+            max-width: 100%; /* 确保图片自适应容器宽度 */
+            height: auto;   /* 保持图片比例 */
+            display: block; /* 移除图片下方的空隙 */
+            margin: 20px auto; /* 居中显示并添加间距 */
+        }
+        .hidden {
+            display: none; /* 隐藏图片 */
+        }
+    </style>
+</head>
+<body>
+    <div id="imageContainer">
+        <img src="images/image1.jpg" alt="第一张图片" class="clickable">
+        <img src="images/image2.jpg" alt="第二张图片" class="clickable hidden">
+        <img src="images/image3.jpg" alt="第三张图片" class="clickable hidden">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let images = document.querySelectorAll(".clickable");
+            let currentImageIndex = 0;
+            
+            images[currentImageIndex].classList.remove('hidden'); // 显示第一张图片
+
+            images.forEach((image, index) => {
+                image.addEventListener("click", function() {
+                    if (index === currentImageIndex) {
+                        currentImageIndex++;
+                        if (currentImageIndex < images.length) {
+                            images[currentImageIndex].classList.remove('hidden');
+                        } else {
+                            alert("所有图片都已消失！");
+                        }
+                        images[index].classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
